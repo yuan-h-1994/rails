@@ -10,3 +10,9 @@ steps:
       - bundle
       - bundle exec rails db:reset
       - RAILS_ENV=drone bundle exec rails test
+services:
+  - name: db
+    image: mysql:8.0.16
+    command: [ "--default-authentication-plugin=mysql_native_password" ] # MySQL8.0のデフォルト認証方式にRailsが対応していないため変更
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes' # テスト用にパスワードなしで接続できるようにする
