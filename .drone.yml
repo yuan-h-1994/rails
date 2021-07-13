@@ -1,0 +1,12 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: test
+    image: ruby:2.6.2
+    environment:
+      RAILS_ENV: test
+    commands:
+      - bundle
+      - bundle exec rails db:reset
+      - RAILS_ENV=drone bundle exec rails test
