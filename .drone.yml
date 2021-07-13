@@ -7,8 +7,6 @@ steps:
     environment:
       RAILS_ENV: test
     commands:
-      - bundle install
-      - bundle
       - bundle exec rails db:reset
       - RAILS_ENV=drone bundle exec rails test
 services:
